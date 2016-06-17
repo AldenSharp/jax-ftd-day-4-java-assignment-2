@@ -2,41 +2,49 @@ package com.cooksys.butterpillar.model;
 
 public class GrowthModel {
 
-	// any instance fields should be private
+	private double lengthToWingspan;
+	private double leavesEatenToWeight;
 
 	public double getLengthToWingspan() {
-		return 0; // to be implemented
+		return lengthToWingspan;
 	}
 
 	public void setLengthToWingspan(double lengthToWingspan) {
-		// to be implemented
+		this.lengthToWingspan = lengthToWingspan;
 	}
 
 	public double getLeavesEatenToWeight() {
-		return 0; // to be implemented
+		return leavesEatenToWeight;
 	}
 
 	public void setLeavesEatenToWeight(double leavesEatenToWeight) {
-		// to be implemented
+		this.leavesEatenToWeight = leavesEatenToWeight;
 	}
 
 	public Catterfly butterpillarToCatterfly(Butterpillar butterpillar) {
-		return null; // to be implemented
+		Catterfly catterfly = new Catterfly();
+		catterfly.setWingspan(butterpillar.getLength() * lengthToWingspan);
+		catterfly.setWeight(butterpillar.getLeavesEaten() * leavesEatenToWeight);
+		return catterfly; // to be implemented
 	}
 
 	public Butterpillar catterflyToButterpillar(Catterfly catterfly) {
-		return null; // to be implemented
+		Butterpillar butterpillar = new Butterpillar();
+		butterpillar.setLength(catterfly.getWingspan() / lengthToWingspan);
+		butterpillar.setLeavesEaten(catterfly.getWeight() / leavesEatenToWeight);
+		return butterpillar; // to be implemented
 	}
-	
+
 	public boolean equals(GrowthModel g) {
-		return false; // TODO: to be implemented
+		return g.getLengthToWingspan() == lengthToWingspan && g.getLeavesEatenToWeight() == leavesEatenToWeight;
 	}
-	
+
 	@Override
 	public String toString() {
-		return null; // TODO: to be implemented
+		return "GrowthModel: {lengthToWingspan=" + lengthToWingspan + "; leavesEatenToWeight=" + leavesEatenToWeight
+				+ "}";
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof GrowthModel) {
